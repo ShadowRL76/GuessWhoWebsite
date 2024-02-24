@@ -1,15 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var links = document.querySelectorAll('.animated-link');
+
+
+
+  const leftElements = document.querySelectorAll('.left');
+  const rightElements = document.querySelectorAll('.right');
   
-    links.forEach(function(link) {
-      link.addEventListener('click', function(event) {
-        // Add clicked class to trigger the animation
-        this.classList.add('clicked');
-  
-        // Remove the clicked class after the animation ends
-        setTimeout(function() {
-          link.classList.remove('clicked');
-        }, 500);
+  // Function to animate elements
+  function animateElements() {
+      leftElements.forEach((element, index) => {
+          element.style.animation = `slideFromLeft 1s ease ${index * 0.3}s forwards`;
       });
-    });
-  });
+      rightElements.forEach((element, index) => {
+          element.style.animation = `slideFromRight 1s ease ${index * 0.3}s forwards`;
+      });
+  }
+  
+  // Call the animation function when the page is loaded
+  window.addEventListener('load', animateElements);
+  

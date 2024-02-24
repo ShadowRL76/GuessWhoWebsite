@@ -310,12 +310,6 @@
     line-height: 1.6;
 }
 
-.about__card:nth-child(2) h2,
-.about__card:nth-child(3) h2 {
-    color: #fff; /* Update heading color */
-    font-size: 24px;
-    margin-bottom: 10px;
-}
 
 
 .about__card:nth-child(2) p,
@@ -326,10 +320,11 @@
 
 .about__card:nth-child(2) h2,
 .about__card:nth-child(3) h2 {
-    color: #333;
+    color: #fff; /* Update heading color */
     font-size: 24px;
     margin-bottom: 10px;
 }
+
 
 /* Download button style */
 .download-button {
@@ -346,98 +341,103 @@
     background-color: #0056b3;
 }
 
-
 /* Developer Section CSS */
 
 /* General styles */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #141414; /* Changed background to dark */
-    color: #fff; /* Changed text color to white */
-}
 
-.wrapper {
+section {
+    min-height: 100vh;
+    width: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
-.image {
-    position: relative;
-    width: 800px;
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* This ensures equal space between the elements */
+}
+
+.left,
+.right {
+    width: 45%; /* Set the width to accommodate both images and content */
+    min-height: 400px; /* Set the minimum height */
+    border-radius: 8px;
+}
+
+.left {
+    background: url('/website/images/IMG_3464.jpg') no-repeat center/cover; /* Adjust the path and image */
+    margin-right: 50px; /* Add more spacing */
+}
+
+.left.opposite {
+    background: url('/website/images/IMG_3462.jpg') no-repeat center/cover; /* Adjust the path and image */
+    margin-left: 50px; /* Add more spacing */
+}
+
+.right,
+.right.opposite {
+    background-color: #f2f2f2; /* Set the background color */
+    display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 30px;
 }
 
-.left-image,
-.right-image {
-    width: 200px;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+.right h1,
+.right.opposite h1 {
+    font-size: 40px;
+    font-weight: lighter;
+    color: black;
 }
 
-.left-image:hover,
-.right-image:hover {
-    transform: scale(1.05);
+.right p,
+.right.opposite p {
+    margin: 20px 0;
+    font-weight: 500;
+    line-height: 25px;
+    color: black;
 }
 
-/* Content styles */
-.content {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.9); /* Changed background color to dark */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: opacity 0.3s ease;
-    opacity: 0;
-    color: #fff; /* Changed text color to white */
-    max-width: 300px;
-    z-index: 1;
-}
-
-.content h1 {
-    font-size: 24px;
-    margin-top: 0;
-}
-
-.content p {
-    margin: 10px 0;
-}
-
-.content a {
-    display: inline-block;
-    padding: 8px 16px;
-    margin-top: 10px;
-    color: #fff;
-    background-color: #007bff;
-    border-radius: 4px;
+.right a,
+.right.opposite a {
     text-decoration: none;
-    transition: background-color 0.3s;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    padding: 20px 30px;
+    display: inline-block;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    margin-top: 20px;
 }
 
-.content a:hover {
-    background-color: #0056b3;
+.btn:hover {
+    background-color: rebeccapurple;
 }
 
-/* Positioning and transitions */
-.left-content {
-    left: -250px;
-    top: 50%;
-    transform: translateY(-50%);
+
+@keyframes slideFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-.right-content {
-    right: -250px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.image:hover .content {
-    opacity: 1;
+@keyframes slideFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
